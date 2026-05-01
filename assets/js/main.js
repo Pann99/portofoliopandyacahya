@@ -79,3 +79,26 @@ if (cvOverlay) cvOverlay.addEventListener('click', closeCVModal);
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeCVModal();
 });
+/*===== PROJECT 2 MODAL =====*/
+const proj2Btn     = document.getElementById('project2-btn');
+const proj2Modal   = document.getElementById('project2-modal');
+const proj2Close   = document.getElementById('proj2-close');
+const proj2Overlay = document.getElementById('proj2-overlay');
+
+function openProj2Modal() {
+    proj2Modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeProj2Modal() {
+    proj2Modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+}
+
+if (proj2Btn)     proj2Btn.addEventListener('click', openProj2Modal);
+if (proj2Close)   proj2Close.addEventListener('click', closeProj2Modal);
+if (proj2Overlay) proj2Overlay.addEventListener('click', closeProj2Modal);
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeProj2Modal();
+});

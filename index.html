@@ -202,9 +202,9 @@ dengan tim untuk menciptakan produk digital yang bermanfaat dan nyaman digunakan
                     </div>
 
                     <div class="work__item work__item--reverse">
-                        <a href="https://www.figma.com/design/OrmV3GeNKshvJ0VDhNiRJx/-1-Noisetraction?node-id=0-1&m=dev&t=frIVR9IYdupOoSAP-1" target="_blank" class="work__img-link">
-                            <img src="assets/img/work2.jpeg" alt="Project 1">
-                        </a>
+                        <button class="work__img-link work__img-btn" id="project2-btn" aria-label="Lihat Project Noisetraction">
+                            <img src="assets/img/work2.jpeg" alt="Project 2 - Noisetraction">
+                        </button>
                         <div class="work__info">
                             <span class="work__number">02</span>
                             <h3 class="work__title">Web Noisetraction</h3>
@@ -252,6 +252,9 @@ dengan tim untuk menciptakan produk digital yang bermanfaat dan nyaman digunakan
                             <p class="work__description">Website ini merupakan sistem monitoring pompa yang menampilkan data kelistrikan seperti tegangan, arus, dan daya secara real-time. Selain itu, pengguna dapat memantau status valve (terbuka/tertutup) untuk mengontrol aliran air, sehingga pengoperasian sistem irigasi menjadi lebih aman, efisien, dan terkontrol.</p>
                             <div class="work__tags">
                                 <span class="work__tag">HTML</span>
+                                <span class="work__tag">CSS</span>
+                                <span class="work__tag">JavaScript</span>
+                                <span class="work__tag">Firebase</span>
                             </div>
                             <a href="https://github.com/Pann99/monitoringsistempompa" target="_blank" class="work__link">
                                 Lihat Project <i class='bx bx-right-arrow-alt'></i>
@@ -276,6 +279,41 @@ dengan tim untuk menciptakan produk digital yang bermanfaat dan nyaman digunakan
             </div>
             <p class="footer__copy">&#169; Pandya Cahya. All rights reserved</p>
         </footer>
+
+        <!-- ===== PROJECT 2 MODAL ===== -->
+        <div id="project2-modal" class="proj-modal" role="dialog" aria-modal="true" aria-labelledby="proj2-title">
+            <div class="proj-modal__overlay" id="proj2-overlay"></div>
+            <div class="proj-modal__content">
+                <button class="proj-modal__close" id="proj2-close" aria-label="Tutup">&times;</button>
+                <div class="proj-modal__header">
+                    <span class="proj-modal__number">02</span>
+                    <h3 class="proj-modal__title" id="proj2-title">Web Noisetraction</h3>
+                    <p class="proj-modal__desc">Pilih ingin melihat versi mana dari project ini:</p>
+                </div>
+                <div class="proj-modal__options">
+                    <a href="https://www.figma.com/design/OrmV3GeNKshvJ0VDhNiRJx/-1-Noisetraction?node-id=0-1&m=dev&t=frIVR9IYdupOoSAP-1" target="_blank" class="proj-modal__option">
+                        <div class="proj-modal__option-icon">
+                            <i class='bx bxl-figma'></i>
+                        </div>
+                        <div class="proj-modal__option-text">
+                            <span class="proj-modal__option-label">Figma Design</span>
+                            <span class="proj-modal__option-sub">Lihat desain UI/UX di Figma</span>
+                        </div>
+                        <i class='bx bx-chevron-right proj-modal__option-arrow'></i>
+                    </a>
+                    <a href="https://pann99.github.io/Noisetraction/" target="_blank" class="proj-modal__option">
+                        <div class="proj-modal__option-icon proj-modal__option-icon--web">
+                            <i class='bx bx-globe'></i>
+                        </div>
+                        <div class="proj-modal__option-text">
+                            <span class="proj-modal__option-label">Web</span>
+                            <span class="proj-modal__option-sub">Lihat Demo Web</span>
+                        </div>
+                        <i class='bx bx-chevron-right proj-modal__option-arrow'></i>
+                    </a>
+                </div>
+            </div>
+        </div>
 
         <!-- ===== CV MODAL ===== -->
         <div id="cv-modal" class="cv-modal" role="dialog" aria-modal="true" aria-labelledby="cv-modal-title">
