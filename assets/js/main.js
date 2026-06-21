@@ -16,7 +16,6 @@ const navLink = document.querySelectorAll('.nav__link')
 
 function linkAction(){
     const navMenu = document.getElementById('nav-menu')
-    // When we click on each nav__link, we remove the show-menu class
     navMenu.classList.remove('show')
 }
 navLink.forEach(n => n.addEventListener('click', linkAction))
@@ -44,61 +43,92 @@ window.addEventListener('scroll', scrollActive)
 
 /*===== SCROLL REVEAL ANIMATION =====*/
 const sr = ScrollReveal({
-    origin: 'top',
-    distance: '60px',
-    duration: 2000,
-    delay: 200,
-//     reset: true
+    origin: 'bottom',
+    distance: '50px',
+    duration: 800,
+    delay: 100,
+    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+    reset: false,
 });
 
-sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text',{}); 
-sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img',{delay: 400}); 
-sr.reveal('.home__social-icon',{ interval: 200}); 
-sr.reveal('.skills__data, .work__img, .contact__input',{interval: 200}); 
+/* Home */
+sr.reveal('.home__data',        { origin: 'left',  distance: '60px' });
+sr.reveal('.home__img',         { origin: 'right', distance: '60px', delay: 200 });
+sr.reveal('.home__social-icon', { origin: 'left',  distance: '40px', interval: 100 });
+
+/* About */
+sr.reveal('.about__img',        { origin: 'left',  distance: '60px' });
+sr.reveal('.about__subtitle',   { delay: 150 });
+sr.reveal('.about__text',       { delay: 250 });
+
+/* Skills */
+sr.reveal('.skills__subtitle',  { delay: 100 });
+sr.reveal('.skills__icon-item', { interval: 60, delay: 150 });
+sr.reveal('.skills__img',       { origin: 'right', distance: '60px', delay: 200 });
+
+/* Project */
+sr.reveal('.work__item',        { interval: 150, delay: 100 });
 
 /*===== CV MODAL =====*/
-const cvBtn = document.getElementById('cv-btn');
-const cvModal = document.getElementById('cv-modal');
-const cvClose = document.getElementById('cv-close');
+const cvBtn     = document.getElementById('cv-btn');
+const cvModal   = document.getElementById('cv-modal');
+const cvClose   = document.getElementById('cv-close');
 const cvOverlay = document.getElementById('cv-overlay');
 
-function openCVModal() {
-    cvModal.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-}
+function openCVModal()  { cvModal.classList.add('is-open');    document.body.style.overflow = 'hidden'; }
+function closeCVModal() { cvModal.classList.remove('is-open'); document.body.style.overflow = ''; }
 
-function closeCVModal() {
-    cvModal.classList.remove('is-open');
-    document.body.style.overflow = '';
-}
-
-if (cvBtn) cvBtn.addEventListener('click', openCVModal);
-if (cvClose) cvClose.addEventListener('click', closeCVModal);
+if (cvBtn)     cvBtn.addEventListener('click', openCVModal);
+if (cvClose)   cvClose.addEventListener('click', closeCVModal);
 if (cvOverlay) cvOverlay.addEventListener('click', closeCVModal);
 
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeCVModal();
-});
-/*===== PROJECT 2 MODAL =====*/
-const proj2Btn     = document.getElementById('project2-btn');
-const proj2Modal   = document.getElementById('project2-modal');
-const proj2Close   = document.getElementById('proj2-close');
-const proj2Overlay = document.getElementById('proj2-overlay');
+/*===== PORTOFOLIO MODAL =====*/
+const portofolioBtn     = document.getElementById('portofolio-btn');
+const portofolioModal   = document.getElementById('portofolio-modal');
+const portofolioClose   = document.getElementById('portofolio-close');
+const portofolioOverlay = document.getElementById('portofolio-overlay');
 
-function openProj2Modal() {
-    proj2Modal.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
+function openPortofolioModal()  { portofolioModal.classList.add('is-open');    document.body.style.overflow = 'hidden'; }
+function closePortofolioModal() { portofolioModal.classList.remove('is-open'); document.body.style.overflow = ''; }
+
+if (portofolioBtn)     portofolioBtn.addEventListener('click', openPortofolioModal);
+if (portofolioClose)   portofolioClose.addEventListener('click', closePortofolioModal);
+if (portofolioOverlay) portofolioOverlay.addEventListener('click', closePortofolioModal);
+
+/*===== PROJECT MODALS =====*/
+function setupProjectModal(btnId, modalId, closeId, overlayId) {
+    const btn     = document.getElementById(btnId);
+    const modal   = document.getElementById(modalId);
+    const closeEl = document.getElementById(closeId);
+    const overlay = document.getElementById(overlayId);
+
+    function openModal() {
+        modal.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+        modal.classList.remove('is-open');
+        document.body.style.overflow = '';
+    }
+
+    if (btn)     btn.addEventListener('click', openModal);
+    if (closeEl) closeEl.addEventListener('click', closeModal);
+    if (overlay) overlay.addEventListener('click', closeModal);
 }
 
-function closeProj2Modal() {
-    proj2Modal.classList.remove('is-open');
-    document.body.style.overflow = '';
-}
+setupProjectModal('project2-btn', 'project2-modal', 'proj2-close', 'proj2-overlay');
+setupProjectModal('project3-btn', 'project3-modal', 'proj3-close', 'proj3-overlay');
+setupProjectModal('project4-btn', 'project4-modal', 'proj4-close', 'proj4-overlay');
+setupProjectModal('project5-btn', 'project5-modal', 'proj5-close', 'proj5-overlay');
 
-if (proj2Btn)     proj2Btn.addEventListener('click', openProj2Modal);
-if (proj2Close)   proj2Close.addEventListener('click', closeProj2Modal);
-if (proj2Overlay) proj2Overlay.addEventListener('click', closeProj2Modal);
-
+/*===== CLOSE MODALS ON ESCAPE =====*/
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeProj2Modal();
+    if (e.key === 'Escape') {
+        closeCVModal();
+        closePortofolioModal();
+        document.querySelectorAll('.proj-modal.is-open').forEach(m => {
+            m.classList.remove('is-open');
+            document.body.style.overflow = '';
+        });
+    }
 });

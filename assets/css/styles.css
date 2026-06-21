@@ -239,6 +239,24 @@ img {
   box-shadow: 0px 10px 36px rgba(0, 0, 0, 0.15);
 }
 
+.button--outline {
+  background-color: transparent;
+  color: var(--first-color);
+  border: 2px solid var(--first-color);
+}
+.button--outline:hover {
+  background-color: var(--first-color);
+  color: #fff;
+  box-shadow: 0px 10px 36px rgba(0, 0, 0, 0.15);
+}
+
+.home__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
 /* ===== ABOUT =====*/
 .about__container {
   row-gap: 2rem;
@@ -869,4 +887,75 @@ img {
 .proj-modal__option:hover .proj-modal__option-arrow {
   color: var(--first-color);
   transform: translateX(3px);
+}
+/* ===== WORK IMAGE STATIC (tidak bisa diklik, tapi ada hover animasi) ===== */
+.work__img-static {
+  display: block;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0px 4px 25px rgba(14, 36, 49, 0.15);
+  cursor: default;
+  pointer-events: none;
+  transition: box-shadow 0.4s, transform 0.4s;
+}
+
+.work__img-static:hover {
+  box-shadow: 0px 8px 35px rgba(14, 36, 49, 0.22);
+  transform: translateY(-4px);
+}
+
+.work__img-static img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.work__item:hover .work__img-static img {
+  transform: scale(1.05);
+}
+
+@media screen and (min-width: 576px) {
+  .work__img-static img {
+    height: 260px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .work__img-static img {
+    height: 300px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .work__img-static img {
+    height: 320px;
+  }
+}
+
+/* ===== WORK LINK BUTTON (untuk trigger modal) ===== */
+.work__link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--first-color);
+  font-weight: var(--font-semi);
+  transition: 0.3s;
+  width: fit-content;
+}
+
+.work__link-btn:hover {
+  gap: 0.6rem;
+}
+
+/* ===== GITHUB ICON STYLE DI MODAL ===== */
+.proj-modal__option-icon--github {
+  background-color: hsl(var(--hue-color), 89%, 94%);
+  color: var(--first-color);
 }
