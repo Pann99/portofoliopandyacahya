@@ -121,7 +121,7 @@ setupProjectModal('project3-btn', 'project3-modal', 'proj3-close', 'proj3-overla
 setupProjectModal('project4-btn', 'project4-modal', 'proj4-close', 'proj4-overlay');
 setupProjectModal('project5-btn', 'project5-modal', 'proj5-close', 'proj5-overlay');
 
-/*===== CLOSE MODALS ON ESCAPE =====*/
+/*===== CLOSE MODALS ON ESCAPE =====*/  
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         closeCVModal();
